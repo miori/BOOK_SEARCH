@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>BOOKS SEARCH</title>
+</head>
+<body>
+<input name="query" id="query" value="" >
+<input type="button" value="実行" onclick="showAddress()"  >
+<div id="search_result"><p></p></div>
+<script type="text/javascript">
+function showAddress() {
+  var appid =  '1035572035589402260';
+  var query = document.getElementById('query').value;
+  var url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?format=json&booksGenreId=001&applicationId=1035572035589402260&callback=showResult";
+  callJSONP( url );
+}
+
+//JSONPを実行する関数
+function callJSONP(url) {
+  var target = document.createElement('script');
+  target.charset = 'utf-8';
+  target.src = url;
+  document.body.appendChild(target);
+}
+
+//JSONPの結果として実行される関数
+function showResult( result ) {
+	var items = result.Items
+	var html = "";
+	for (var i = 0, j = items.length; i < j; i++) {
+		html += items[i].Item.title;
+		$("search_result").html(html);
+	}
+}
+</script>
+</body>
+</html>
