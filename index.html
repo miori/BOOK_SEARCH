@@ -3,37 +3,55 @@
 <head>
 <meta http-equiv="content-script-type" content="text/javascript">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="booksearch.js"></script>
 <title>BOOKS SEARCH</title>
+<STYLE type="text/css">
+body{
+    font-family : "HiraKakuProN-W6", "ヒラギノ角ゴ ProN W6", Meiryo, メイリオ, sans-serif;
+}
+.box {
+	float: left;
+}
+
+.boxContainer {
+	overflow: hidden;
+}
+
+/* clearfix */
+.boxContainer:before,
+.boxContainer:after {
+    content: "";
+    display: table;
+}
+ 
+.boxContainer:after {
+    clear: both;
+}
+ 
+/* For IE 6/7 (trigger hasLayout) */
+.boxContainer {
+    zoom: 1;
+}
+
+table {
+ width:350px;
+}
+
+</STYLE>
 </head>
-<body>
-<input name="query" id="query" value="" >
-<input type="button" value="実行" onclick="showAddress()"  >
+<body background="b_07_3.png"> 
+
+<!-- 検索フォーム -->
+<form action="" method="post">
+	<h1>BOOK　SEARCH!</h1>
+	<p>書籍名で探す！：<input type="text" name="title" size="40"></p>
+	<p>著者名で探す！：<input type="text" name="author" size="40"></p>
+<input type="submit" id="submit" value="SEARCH!">
+	<p>*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</p>
+
+<!-- 結果 -->
 <div id="search_result"><p></p></div>
-<script type="text/javascript">
-function showAddress() {
-  var appid =  '1035572035589402260';
-  var query = document.getElementById('query').value;
-  var url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?format=json&booksGenreId=001&applicationId=1035572035589402260&callback=showResult";
-  callJSONP( url );
-}
-
-//JSONPを実行する関数
-function callJSONP(url) {
-  var target = document.createElement('script');
-  target.charset = 'utf-8';
-  target.src = url;
-  document.body.appendChild(target);
-}
-
-//JSONPの結果として実行される関数
-function showResult( result ) {
-	var items = result.Items
-	var html = "";
-	for (var i = 0, j = items.length; i < j; i++) {
-		html += items[i].Item.title;
-		$("search_result").html(html);
-	}
-}
-</script>
+<div id="more"><a href="javascript:void(0);" id="more">SHOW MORE...</a></div>
 </body>
 </html>
