@@ -1,0 +1,76 @@
+body{
+    font-family : "HiraKakuProN-W6", "ÉqÉâÉMÉmäpÉS ProN W6", Meiryo, ÉÅÉCÉäÉI, sans-serif;
+}
+.box {
+	float: left;
+}
+
+.boxContainer {
+	overflow: hidden;
+}
+
+/* clearfix */
+.boxContainer:before,
+.boxContainer:after {
+    content: "";
+    display: table;
+}
+ 
+.boxContainer:after {
+    clear: both;
+}
+ 
+/* For IE 6/7 (trigger hasLayout) */
+.boxContainer {
+    zoom: 1;
+}
+
+table {
+ width:350px;
+}
+
+#back {
+	position: fixed;
+	bottom: 10px;
+	margin-left: 1000px;
+}
+
+#back a {
+	width: 108px;
+	display: block;
+	text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back a:hover {
+	color: #000;
+}
+
+/* arrow icon (span tag) */
+#back span {
+	width: 108px;
+	height: 108px;
+	display: block;
+	margin-bottom: 7px;
+	background: #ddd url(up-arrow.png) no-repeat center center;
+
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back a:hover span {
+	background-color: #777;
+}
